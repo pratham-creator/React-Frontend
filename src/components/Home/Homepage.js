@@ -6,6 +6,9 @@ import CompCarousel from "./CompaniesCarousel";
 import BlogCarousel from "./BlogsCarousel";
 import BlogsCarousel1 from "./BlogCarousel1";
 import CompanyPoster from './CompanyPoster';
+import { getCompanies } from "../../api/company";
+import { Carousel } from 'antd';
+import 'antd/dist/antd.css';
 
 const Homepage = () => {
   const navigation = [
@@ -34,6 +37,21 @@ const Homepage = () => {
   return (
     <>
       <Navbar navigation={navigation} />
+
+      <div className="container-fluid bg-gray-300 outerCardContainer">
+        
+            <Carousel autoplay>
+            {
+                
+                company.map((c,i)=> (
+                    
+                    <CompanyPoster company={c}/>
+                ))
+                
+            }
+            </Carousel>
+            
+      </div>
 
       <div className="bg-indigo-900 relative overflow-hidden h-screen">
         <img
